@@ -14,7 +14,8 @@
 import re
 from typing import List
 
-from .char_convert import tranditional_to_simplified
+from .char_convert import traditional_to_simplified
+from .char_convert import simplified_to_traditional
 from .chronology import RE_DATE
 from .chronology import RE_DATE2
 from .chronology import RE_TIME
@@ -122,13 +123,18 @@ class TextNormalizer():
         sentence = sentence.replace('×', '乘')
         sentence = sentence.replace('÷', '除')
         sentence = sentence.replace('=', '等')
+
+        # Jyutping Adjustment
+        sentence = sentence.replace('零', '靈')
+
         # re filter special characters, have one more character "-" than line 68
         sentence = re.sub(r'[-——《》【】<=>{}()（）#&@“”^_|\\]', '', sentence)
         return sentence
 
     def normalize_sentence(self, sentence: str) -> str:
         # basic character conversions
-        sentence = tranditional_to_simplified(sentence)
+        # For Yue NOT needed
+        #sentence = traditional_to_simplified(sentence)
         sentence = sentence.translate(F2H_ASCII_LETTERS).translate(
             F2H_DIGITS).translate(F2H_SPACE)
 
@@ -166,6 +172,8 @@ class TextNormalizer():
         sentence = RE_DEFAULT_NUM.sub(replace_default_num, sentence)
         sentence = RE_NUMBER.sub(replace_number, sentence)
         sentence = self._post_replace(sentence)
+        # For Yue
+        sentence = simplified_to_traditional(sentence)
 
         return sentence
 
