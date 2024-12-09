@@ -113,7 +113,8 @@ def text_normalize(text):
     dest_text = ""
     for sentence in sentences:
         dest_text += replace_punctuation(sentence)
-    return dest_text
+    #return dest_text
+    return text # Fix normalize produce simplified chinese
 
 
 punctuation_set=set(punctuation)
