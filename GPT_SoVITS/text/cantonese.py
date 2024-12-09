@@ -4,7 +4,8 @@ import sys
 import re
 import cn2an
 
-from pyjyutping import jyutping
+import pycantonese
+#from pyjyutping import jyutping
 from text.symbols import punctuation
 from text.zh_normalization.text_normlization import TextNormalizer
 
@@ -171,9 +172,19 @@ def jyuping_to_initials_finals_tones(jyuping_syllables):
     # return initials_finals, tones, word2ph
     return phones, word2ph
 
+def romanise_text(text):
+    text_list = []
+    for not_word, word in pycantonese.characters_to_jyutping(text):
+        if word:
+            word_list = re.split('([A-Za-z]+\d)', word)
+            text_list.append(" ".join(word_list))
+        else:
+            text_list.append(not_word)
+    text = re.sub(' +', ' ', "".join(text_list).lstrip(' '))
+    return text
 
 def get_jyutping(text):
-    jp = jyutping.convert(text)
+    jp = romanise_text(text) #jyutping.convert(text)
     # print(1111111,jp)
     for symbol in punctuation:
         jp = jp.replace(symbol, " " + symbol + " ")
