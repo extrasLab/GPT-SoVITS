@@ -178,7 +178,7 @@ class TextNormalizer():
 
         return sentence
 
-    def normalize(self, text: str) -> List[str]:
+    def normalize(self, text: str, traditional = False) -> List[str]:
         sentences = self._split(text)
-        sentences = [self.normalize_sentence(sent) for sent in sentences]
+        sentences = [self.normalize_sentence(sent, traditional) for sent in sentences]
         return sentences
