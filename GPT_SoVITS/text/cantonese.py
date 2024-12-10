@@ -109,12 +109,11 @@ def replace_punctuation(text):
 
 def text_normalize(text):
     tx = TextNormalizer()
-    sentences = tx.normalize(text)
+    sentences = tx.normalize(text, traditional = True)
     dest_text = ""
     for sentence in sentences:
         dest_text += replace_punctuation(sentence)
-    #return dest_text
-    return text # Fix normalize produce simplified chinese
+    return dest_text
 
 
 punctuation_set=set(punctuation)

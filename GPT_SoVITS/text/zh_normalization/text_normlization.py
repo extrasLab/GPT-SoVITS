@@ -131,7 +131,7 @@ class TextNormalizer():
         sentence = re.sub(r'[-——《》【】<=>{}()（）#&@“”^_|\\]', '', sentence)
         return sentence
 
-    def normalize_sentence(self, sentence: str) -> str:
+    def normalize_sentence(self, sentence: str, traditional = False) -> str:
         # basic character conversions
         # For Yue NOT needed
         #sentence = traditional_to_simplified(sentence)
@@ -173,7 +173,8 @@ class TextNormalizer():
         sentence = RE_NUMBER.sub(replace_number, sentence)
         sentence = self._post_replace(sentence)
         # For Yue
-        sentence = simplified_to_traditional(sentence)
+        if traditional:
+            sentence = simplified_to_traditional(sentence)
 
         return sentence
 

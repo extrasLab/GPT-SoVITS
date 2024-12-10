@@ -23,7 +23,7 @@ from .dataset import get_char_phoneme_labels
 from .dataset import get_phoneme_labels
 from .dataset import prepare_onnx_input
 from .utils import load_config
-from ..zh_normalization.char_convert import tranditional_to_simplified
+from ..zh_normalization.char_convert import traditional_to_simplified
 
 model_version = '1.1'
 
@@ -219,7 +219,7 @@ class G2PWOnnxConverter:
         texts, query_ids, sent_ids, partial_results = [], [], [], []
         for sent_id, sent in enumerate(sentences):
             # pypinyin works well for Simplified Chinese than Traditional Chinese
-            sent_s = tranditional_to_simplified(sent)
+            sent_s = traditional_to_simplified(sent)
             pypinyin_result = pinyin(
                 sent_s, neutral_tone_with_five=True, style=Style.TONE3)
             partial_result = [None] * len(sent)
