@@ -34,6 +34,7 @@ from tools.my_utils import load_audio,clean_path
 
 from time import time as ttime
 import shutil
+from tqdm import tqdm
 def my_save(fea,path):#####fix issue: torch.save doesn't support chinese path
     dir=os.path.dirname(path)
     name=os.path.basename(path)
@@ -97,7 +98,7 @@ def name2go(wav_name,wav_path):
 with open(inp_text,"r",encoding="utf8")as f:
     lines=f.read().strip("\n").split("\n")
 
-for line in lines[int(i_part)::int(all_parts)]:
+for line in tqdm(lines[int(i_part)::int(all_parts)]):
     try:
         # wav_name,text=line.split("\t")
         wav_name, spk_name, language, text = line.split("|")

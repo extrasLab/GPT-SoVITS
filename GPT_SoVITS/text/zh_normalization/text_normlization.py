@@ -125,7 +125,7 @@ class TextNormalizer():
         sentence = sentence.replace('=', '等')
 
         # Jyutping Adjustment
-        sentence = sentence.replace('零', '靈')
+        #sentence = sentence.replace('零', '靈')
 
         # re filter special characters, have one more character "-" than line 68
         sentence = re.sub(r'[-——《》【】<=>{}()（）#&@“”^_|\\]', '', sentence)
