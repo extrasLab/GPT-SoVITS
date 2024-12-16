@@ -41,8 +41,7 @@ def clean_text(text, language, version=None):
     if language == "zh" or language=="yue":##########
         phones, word2ph = language_module.g2p(norm_text)
         assert len(phones) == sum(word2ph)
-        # Fix assert NOT passing. Not sure why?
-        #assert len(norm_text) == len(word2ph)
+        assert len(norm_text) == len(word2ph)
     elif language == "en":
         phones = language_module.g2p(norm_text)
         if len(phones) < 4:
