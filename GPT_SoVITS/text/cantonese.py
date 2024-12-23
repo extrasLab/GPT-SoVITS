@@ -184,7 +184,10 @@ def romanise_text(text):
     return text
 
 def get_jyutping(text):
+    # Fix pycantonese misbehavior with "."
+    text = text.replace(".", "。")
     jp = romanise_text(text) #jyutping.convert(text)
+    jp = jp.replace("。", ".")
     # print(1111111,jp)
     for symbol in punctuation:
         jp = jp.replace(symbol, " " + symbol + " ")
