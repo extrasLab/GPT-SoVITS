@@ -20,6 +20,8 @@ Please follow the steps below for GPT-SoVITS model, but use this repository inst
 
 Access to the model is limited and subjected to approval.
 
+---
+
 <h1>GPT-SoVITS-WebUI</h1>
 A Powerful Few-shot Voice Conversion and Text-to-Speech WebUI.<br><br>
 
