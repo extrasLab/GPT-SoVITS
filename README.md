@@ -1,5 +1,3 @@
-<div align="center">
-
 # Hong Kong Cantonese
 
 This model is trained from public Hong Kong Cantonese dataset. It is expected to be a research prototype only to showcase current opensource speech technology.
@@ -18,9 +16,13 @@ Please follow the steps below for GPT-SoVITS model, but use this repository inst
 
 ## Model availability
 
-Access to the model is limited and subjected to approval.
+Access to the model is limited and subjected to approval. Please download the model when provided link, and select it for inference.
+
 
 ---
+
+
+<div align="center">
 
 <h1>GPT-SoVITS-WebUI</h1>
 A Powerful Few-shot Voice Conversion and Text-to-Speech WebUI.<br><br>
